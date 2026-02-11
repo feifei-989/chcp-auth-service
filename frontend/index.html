@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHCP - 用户系统</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ========== 加载中 ========== -->
+    <div id="loading-screen" class="screen active">
+        <div class="spinner"></div>
+        <p>正在初始化...</p>
+    </div>
+
+    <!-- ========== 登录页面 ========== -->
+    <div id="auth-screen" class="screen">
+        <div class="auth-container">
+            <div class="auth-header">
+                <div class="logo">CHCP</div>
+                <p class="tagline">用户认证 & 积分系统</p>
+            </div>
+            <div id="clerk-auth"></div>
+        </div>
+    </div>
+
+    <!-- ========== 用户仪表盘 ========== -->
+    <div id="dashboard-screen" class="screen">
+        <nav class="navbar">
+            <div class="nav-brand">CHCP</div>
+            <button id="logout-btn" class="btn btn-outline">退出登录</button>
+        </nav>
+
+        <main class="dashboard">
+            <!-- 用户信息卡片 -->
+            <div class="card user-card">
+                <div class="user-info">
+                    <img id="user-avatar" class="avatar" src="" alt="avatar">
+                    <div class="user-details">
+                        <h2 id="user-name">用户名</h2>
+                        <p id="user-email" class="text-muted">email@example.com</p>
+                        <span id="user-status" class="badge badge-active">活跃</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 积分卡片 -->
+            <div class="card credits-card">
+                <div class="credits-header">
+                    <span class="credits-label">当前积分</span>
+                    <div class="credits-icon">💎</div>
+                </div>
+                <div class="credits-amount" id="credits-amount">--</div>
+                <p class="credits-note">注册即赠送 50 积分</p>
+            </div>
+
+            <!-- 交易记录 -->
+            <div class="card transactions-card">
+                <h3>积分记录</h3>
+                <div id="transactions-list" class="transactions-list">
+                    <p class="text-muted">加载中...</p>
+                </div>
+                <div id="no-transactions" class="empty-state" style="display:none;">
+                    <p>暂无积分记录</p>
+                </div>
+            </div>
+
+            <!-- 账户信息 -->
+            <div class="card account-card">
+                <h3>账户信息</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">用户 ID</span>
+                        <span id="user-id" class="info-value">--</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">注册时间</span>
+                        <span id="user-created" class="info-value">--</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Clerk JS SDK -->
+    <script
+        async
+        crossorigin="anonymous"
+        data-clerk-publishable-key=""
+        src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+        type="text/javascript"
+    ></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
